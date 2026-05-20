@@ -1,0 +1,57 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    # Broadcaster to publish joint states to TF
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    # Controls the Fork Lift
+    fork_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    # Controls the Wheels
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController
+
+fork_controller:
+  ros__parameters:
+    joints:
+      - fork_lift_joint
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    # Very strong PID gains for lifting heavy pallets without tipping
+    gains:
+      fork_lift_joint: {p: 5000.0, i: 0.0, d: 50.0}
+
+diff_drive_controller:
+  ros__parameters:
+    left_wheel_names: ["left_front_wheel_joint"]
+    right_wheel_names: ["right_front_wheel_joint"]
+    wheel_separation: 0.5
+    wheel_radius: 0.1
+    
+    # Wheel base for better turning (distance between front and rear axles)
+    wheel_separation_multiplier: 1.0
+    left_wheel_radius_multiplier: 1.0
+    right_wheel_radius_multiplier: 1.0
+    
+    # Use standard Twist messages (not stamped)
+    use_stamped_vel: false
+    
+    # Odometry publishing
+    publish_rate: 50.0
+    open_loop: false
+    
+    # Velocity and acceleration limits - MUCH HIGHER for aggressive turning
+    linear.x.has_velocity_limits: true
+    linear.x.max_velocity: 1.0
+    linear.x.min_velocity: -1.0
+    angular.z.has_velocity_limits: true
+    angular.z.max_velocity: 5.0
+    angular.z.min_velocity: -5.0
