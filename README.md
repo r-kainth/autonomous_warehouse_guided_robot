@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/35438409/README.md)
 # Autonomous Guided Sorting Vehicle (AGSV)
 
 A simulated autonomous forklift built with **ROS 2 Humble** and **Gazebo**. It uses a single onboard camera to find colour-coded boxes on pallets, steers itself onto each pallet, lifts it, and carries it to the matching drop-off zone. A 14-state mission controller runs the whole job, all three pallets, with no human input.
