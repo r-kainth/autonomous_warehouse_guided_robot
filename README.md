@@ -10,9 +10,7 @@ A simulated autonomous forklift built with **ROS 2 Humble** and **Gazebo**. It u
 
 Full three-pallet run (shown at 3× speed, about 1 minute):
 
-<!-- DEMO_VIDEO: edit this README on github.com, delete this comment, and drag AGSV_demo.mp4 onto this spot.
-     GitHub uploads it and inserts a https://github.com/user-attachments/assets/... link on its own line,
-     which shows as an inline video player. -->
+https://github.com/user-attachments/assets/f8899855-1464-4deb-9932-3d33e6ba03b9
 
 📊 **[Project presentation (PDF)](docs/AGSV_slides.pdf)**
 
